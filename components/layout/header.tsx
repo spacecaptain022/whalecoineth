@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { LineChart, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { NAV, SOCIALS } from "@/lib/constants";
+import { NAV, SOCIALS, X_HANDLE } from "@/lib/constants";
 import { cn } from "@/lib/cn";
 
 export function Header() {
@@ -76,14 +76,22 @@ export function Header() {
             hasNav ? "md:col-start-3" : "md:col-start-2",
           )}
         >
-          <Image
-            src="/brand/xlogo.svg"
-            alt=""
-            width={22}
-            height={22}
-            className="h-[22px] w-[22px] shrink-0"
-            aria-hidden
-          />
+          <a
+            href={SOCIALS.x}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 rounded-md text-accent-deep transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-deep"
+            aria-label={`Whalecoin on X (@${X_HANDLE})`}
+          >
+            <Image
+              src="/brand/xlogo.svg"
+              alt=""
+              width={22}
+              height={22}
+              className="h-[22px] w-[22px]"
+              aria-hidden
+            />
+          </a>
           <Button
             href={SOCIALS.whaleWatching}
             external
@@ -127,14 +135,23 @@ export function Header() {
               ))
             : null}
           <div className={cn("flex items-center gap-3", hasNav && "mt-3")}>
-            <Image
-              src="/brand/xlogo.svg"
-              alt=""
-              width={24}
-              height={24}
-              className="h-6 w-6 shrink-0"
-              aria-hidden
-            />
+            <a
+              href={SOCIALS.x}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="shrink-0 rounded-md text-accent-deep transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-deep"
+              aria-label={`Whalecoin on X (@${X_HANDLE})`}
+            >
+              <Image
+                src="/brand/xlogo.svg"
+                alt=""
+                width={24}
+                height={24}
+                className="h-6 w-6"
+                aria-hidden
+              />
+            </a>
             <Button
               href={SOCIALS.whaleWatching}
               external
