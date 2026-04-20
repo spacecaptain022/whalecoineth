@@ -28,7 +28,7 @@ const STANZAS: { lines: string[]; weight?: "normal" | "bold" }[] = [
   },
   {
     lines: [
-      "WhalecoinETH is an emblem of that force.",
+      "Whalecoin is an emblem of that force.",
       "Not for the loudest.",
       "For the heaviest.",
     ],
@@ -64,10 +64,16 @@ export function LoreManifesto() {
             >
             <motion.span
               variants={fadeRise}
-              className="eyebrow mb-7 block w-full text-text"
+              className="eyebrow mb-2 block w-full text-text"
             >
               The Manifesto
             </motion.span>
+            <motion.p
+              variants={fadeRise}
+              className="mb-7 max-w-[36ch] font-ink text-[15px] leading-snug text-text-muted md:text-[16px]"
+            >
+              Inspired by Ryoshi's Vision
+            </motion.p>
             <h2 id="lore-title" className="sr-only">
               Manifesto
             </h2>

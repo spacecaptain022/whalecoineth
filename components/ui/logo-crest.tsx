@@ -15,7 +15,7 @@ export function LogoCrest({ size = 44, className, tone = "ink" }: Props) {
       viewBox="0 0 64 64"
       fill="none"
       role="img"
-      aria-label="WhalecoinETH crest"
+      aria-label="Whalecoin crest"
       className={cn("shrink-0", className)}
     >
       <circle

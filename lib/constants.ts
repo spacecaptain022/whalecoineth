@@ -22,10 +22,11 @@ export const SOCIALS = {
   whaleWatching: "https://dexscreener.com/",
   etherscan: "https://etherscan.io/",
   buy: "https://app.uniswap.org/",
+  /** Claim / eligibility checker — replace with your live claim URL. */
+  claimEligibility: "https://dexscreener.com/",
 } as const;
 
-export const NAV = [
-  { label: "The Deep", href: "#deep" },
-  { label: "Tides", href: "#tides" },
-  { label: "X", href: "#transmission" },
-] as const;
+export type NavItem = { readonly label: string; readonly href: string };
+
+/** Header / mobile drawer links — empty hides the center nav. */
+export const NAV: readonly NavItem[] = [];

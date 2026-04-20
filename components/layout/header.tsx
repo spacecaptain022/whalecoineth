@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { LineChart, Menu, X } from "lucide-react";
+import { LineChart, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NAV, SOCIALS } from "@/lib/constants";
 import { cn } from "@/lib/cn";
@@ -11,6 +11,7 @@ import { cn } from "@/lib/cn";
 export function Header() {
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const hasNav = NAV.length > 0;
 
   React.useEffect(() => {
     function onScroll() {
@@ -30,7 +31,12 @@ export function Header() {
           : "bg-transparent border-b border-transparent",
       )}
     >
-      <div className="relative mx-auto grid h-16 max-w-[1440px] grid-cols-[1fr_auto] items-center gap-3 px-4 sm:px-6 md:grid-cols-[1fr_auto_1fr] md:gap-4 md:px-8">
+      <div
+        className={cn(
+          "relative mx-auto grid h-16 max-w-[1440px] grid-cols-[1fr_auto] items-center gap-3 px-4 sm:px-6 md:gap-4 md:px-8",
+          hasNav ? "md:grid-cols-[1fr_auto_1fr]" : "md:grid-cols-[1fr_auto]",
+        )}
+      >
         <Link
           href="/"
           className="col-start-1 row-start-1 flex min-w-0 items-center gap-2 justify-self-start group sm:gap-3 md:justify-self-start"
@@ -38,7 +44,7 @@ export function Header() {
           <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-accent-deep/50 shadow-[inset_0_0_0_1px_rgba(231,233,230,0.45)] transition-transform duration-500 ease-[var(--ease-tide)] group-hover:-translate-y-0.5">
             <Image
               src="/brand/logo.jpeg"
-              alt="WhalecoinETH"
+              alt="Whalecoin"
               fill
               sizes="40px"
               className="object-cover scale-[1.05]"
@@ -46,23 +52,38 @@ export function Header() {
             />
           </span>
           <span className="wordmark truncate text-[16px] text-text sm:text-[18px]">
-            Whalecoin<span className="text-text-muted">ETH</span>
+            Whalecoin
           </span>
         </Link>
 
-        <nav className="col-start-2 row-start-1 hidden items-center justify-self-center gap-8 md:flex">
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="ink-link text-[13px] tracking-wide text-text/80 hover:text-text"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+        {hasNav ? (
+          <nav className="col-start-2 row-start-1 hidden items-center justify-self-center gap-8 md:flex">
+            {NAV.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="ink-link text-[13px] tracking-wide text-text/80 hover:text-text"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        ) : null}
 
-        <div className="hidden md:col-start-3 md:row-start-1 md:flex md:w-auto md:justify-self-end">
+        <div
+          className={cn(
+            "hidden md:row-start-1 md:flex md:w-auto md:items-center md:justify-self-end md:gap-2.5",
+            hasNav ? "md:col-start-3" : "md:col-start-2",
+          )}
+        >
+          <Image
+            src="/brand/xlogo.svg"
+            alt=""
+            width={22}
+            height={22}
+            className="h-[22px] w-[22px] shrink-0"
+            aria-hidden
+          />
           <Button
             href={SOCIALS.whaleWatching}
             external
@@ -70,7 +91,7 @@ export function Header() {
             className="inline-flex h-10 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap px-3 text-[13px] leading-none"
           >
             <LineChart className="h-4 w-4 shrink-0" aria-hidden />
-            View Whale Watching
+            Whale Watching Dashboard
           </Button>
         </div>
 
@@ -81,7 +102,7 @@ export function Header() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          <Menu className="h-5 w-5" aria-hidden />
         </button>
       </div>
 
@@ -93,25 +114,37 @@ export function Header() {
         )}
       >
         <nav className="mx-3 mb-3 flex flex-col gap-1 rounded-2xl border border-surface-dark/30 bg-bg/90 px-3 py-4 backdrop-blur-md">
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="py-3 px-2 text-[15px] text-text border-b border-surface-dark/30 last:border-b-0"
+          {hasNav
+            ? NAV.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="py-3 px-2 text-[15px] text-text border-b border-surface-dark/30 last:border-b-0"
+                >
+                  {item.label}
+                </a>
+              ))
+            : null}
+          <div className={cn("flex items-center gap-3", hasNav && "mt-3")}>
+            <Image
+              src="/brand/xlogo.svg"
+              alt=""
+              width={24}
+              height={24}
+              className="h-6 w-6 shrink-0"
+              aria-hidden
+            />
+            <Button
+              href={SOCIALS.whaleWatching}
+              external
+              size="lg"
+              className="min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap"
             >
-              {item.label}
-            </a>
-          ))}
-          <Button
-            href={SOCIALS.whaleWatching}
-            external
-            size="lg"
-            className="mt-3 w-full items-center justify-center gap-2 whitespace-nowrap"
-          >
-            <LineChart className="h-4 w-4 shrink-0" aria-hidden />
-            View Whale Watching
-          </Button>
+              <LineChart className="h-4 w-4 shrink-0" aria-hidden />
+              Whale Watching Dashboard
+            </Button>
+          </div>
         </nav>
       </div>
     </header>

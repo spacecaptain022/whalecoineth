@@ -42,22 +42,22 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://whalecoineth.xyz"),
   title: {
-    default: "WhalecoinETH · The Deep Moves First",
-    template: "%s · WhalecoinETH",
+    default: "Whalecoin · The Deep Moves First",
+    template: "%s · Whalecoin",
   },
   description:
     "A mythic Ethereum token shaped by conviction, silence, and unseen market force. The signal beneath the wave.",
   openGraph: {
-    title: "WhalecoinETH · The Deep Moves First",
+    title: "Whalecoin · The Deep Moves First",
     description:
       "A mythic Ethereum token shaped by conviction, silence, and unseen market force.",
     type: "website",
     url: "/",
-    siteName: "WhalecoinETH",
+    siteName: "Whalecoin",
   },
   twitter: {
     card: "summary_large_image",
-    title: "WhalecoinETH · The Deep Moves First",
+    title: "Whalecoin · The Deep Moves First",
     description: "A silent giant on Ethereum. The signal beneath the wave.",
   },
 };

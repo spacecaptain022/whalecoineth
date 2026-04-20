@@ -8,7 +8,7 @@ export default function NotFound() {
         <div className="relative mx-auto mb-8 h-28 w-28 overflow-hidden rounded-full border border-accent-deep/50 animate-drift">
           <Image
             src="/brand/logo.jpeg"
-            alt="WhalecoinETH"
+            alt="Whalecoin"
             fill
             sizes="112px"
             className="object-cover scale-[1.05]"

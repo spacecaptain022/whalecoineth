@@ -113,7 +113,7 @@ export function Hero() {
             <div className="relative aspect-square w-[min(54vw,340px)] overflow-hidden rounded-[30px] border border-accent-deep/20 shadow-[0_20px_60px_-20px_rgba(20,40,61,0.35)]">
               <Image
                 src="/brand/logo.jpeg"
-                alt="WhalecoinETH. A whale breaching the Great Wave, ukiyo-e crest"
+                alt="Whalecoin. A whale breaching the Great Wave, ukiyo-e crest"
                 fill
                 priority
                 sizes="(max-width: 768px) 54vw, 340px"
@@ -173,8 +173,8 @@ export function Hero() {
             variants={fadeRise}
             className="mt-6 flex flex-wrap items-center justify-center gap-3"
           >
-            <Button href={SOCIALS.buy} external size="lg">
-              Enter the Current
+            <Button href={SOCIALS.claimEligibility} external size="lg">
+              Join Them
               <ArrowUpRight className="h-4 w-4" />
             </Button>
             <Button href={SOCIALS.dexscreener} external variant="secondary" size="lg">
@@ -195,29 +195,6 @@ export function Hero() {
             </span>
             <span className="h-3 w-px bg-surface-dark/70" />
             <CopyButton value={TOKEN.contract} />
-          </motion.div>
-
-          <motion.div
-            variants={fadeRise}
-            className="mt-4 flex items-center gap-6 text-[12px] tracking-widest uppercase text-text-muted"
-          >
-            <a
-              href={SOCIALS.x}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ink-link hover:text-text"
-            >
-              Follow the Signal
-            </a>
-            <span className="h-3 w-px bg-surface-dark/70" />
-            <a
-              href={SOCIALS.telegram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ink-link hover:text-text"
-            >
-              Move with the Pod
-            </a>
           </motion.div>
         </motion.div>
       </div>

@@ -1,10 +1,10 @@
-import { TOKEN, SOCIALS } from "@/lib/constants";
+import { TOKEN } from "@/lib/constants";
 import { CopyButton } from "@/components/ui/copy-button";
 
 export function AnnouncementBar() {
   return (
     <div className="relative z-40 rounded-b-2xl bg-night-bar text-gold shadow-[0_8px_24px_-8px_rgba(16,31,49,0.45)]">
-      <div className="mx-auto flex h-9 max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-6 md:px-8">
+      <div className="mx-auto flex h-9 max-w-[1440px] items-center gap-4 px-4 sm:px-6 md:px-8">
         <div className="flex min-w-0 items-center gap-3">
           <span className="eyebrow text-gold/75 hidden sm:inline">
             {TOKEN.chain.toUpperCase()}
@@ -18,14 +18,6 @@ export function AnnouncementBar() {
             className="text-gold/75 hover:text-gold"
           />
         </div>
-        <a
-          href={SOCIALS.buy}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="eyebrow text-gold/90 hover:text-gold transition-colors"
-        >
-          Enter the Current →
-        </a>
       </div>
     </div>
   );

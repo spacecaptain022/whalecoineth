@@ -11,7 +11,12 @@ export function Why() {
       className="relative overflow-hidden border-t border-surface-dark/40 bg-accent-deep text-gold"
     >
       {/* Parallax background image */}
-      <ParallaxImage src="/brand/4pillars.png" opacityClass="opacity-40" strength={10} />
+      <ParallaxImage
+        src="/brand/4pillars.png"
+        opacityClass="opacity-40"
+        strength={10}
+        mobileHorizontalPan
+      />
       {/* Readability gradient */}
       <div
         aria-hidden="true"

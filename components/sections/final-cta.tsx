@@ -67,33 +67,21 @@ export function FinalCta() {
           <motion.h2
             id="cta-title"
             variants={clipReveal}
-            className="font-display text-display-xl text-gold max-w-[20ch]"
+            className="font-display text-display-xl text-gold max-w-[min(28ch,100%)]"
           >
-            The current is shifting.
+            The Whales Gather on Ethereum
           </motion.h2>
-          <motion.p
-            variants={fadeRise}
-            className="font-ink text-[24px] md:text-[30px] text-gold/85"
-          >
-            Enter with weight.
-          </motion.p>
-          <motion.div variants={fadeRise} className="mt-4">
+          <motion.div variants={fadeRise}>
             <Button
-              href={SOCIALS.buy}
+              href={SOCIALS.claimEligibility}
               external
               size="lg"
               className="bg-foam text-accent-deep hover:bg-bg hover:text-accent-deep"
             >
-              Enter the Current
+              Join Them
               <ArrowUpRight className="h-4 w-4" />
             </Button>
           </motion.div>
-          <motion.p
-            variants={fadeRise}
-            className="mt-4 text-[12px] tracking-[0.2em] uppercase text-gold/55"
-          >
-            When the Whale rises, the market feels it. Be there before the wake.
-          </motion.p>
         </motion.div>
       </div>
     </section>
