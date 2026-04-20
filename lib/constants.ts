@@ -20,16 +20,19 @@ export const DEXSCREENER_URL = "https://dexscreener.com/" as const;
 /** Etherscan homepage (footer icon). Token page: `https://etherscan.io/token/${TOKEN.contract}` */
 export const ETHERSCAN_URL = "https://etherscan.io/" as const;
 
+/** Claim app: eligibility + whale watching dashboard. */
+export const CLAIM_APP_URL = "https://claim.whalecoineth.com/" as const;
+
 export const SOCIALS = {
   x: `https://x.com/${X_HANDLE}`,
   telegram: "https://t.me/",
   dexscreener: DEXSCREENER_URL,
-  /** Pair / chart page for “watch the tide” — set to your Dexscreener pair URL when live. */
-  whaleWatching: DEXSCREENER_URL,
+  /** Header “Whale Watching Dashboard” — claim app. */
+  whaleWatching: CLAIM_APP_URL,
   etherscan: ETHERSCAN_URL,
   buy: "https://app.uniswap.org/",
-  /** Claim / eligibility checker — replace with your live claim URL. */
-  claimEligibility: DEXSCREENER_URL,
+  /** Hero / final CTA “Check Eligibility” — claim app. */
+  claimEligibility: CLAIM_APP_URL,
 } as const;
 
 export type NavItem = { readonly label: string; readonly href: string };
