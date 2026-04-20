@@ -6,13 +6,19 @@ import { drawLine, floatViewport, floatViewportReduced } from "@/lib/motion";
 
 type Props = {
   className?: string;
-  tone?: "ink" | "muted" | "foam";
+  tone?: "ink" | "muted" | "foam" | "gold";
 };
 
 export function DividerWave({ className, tone = "muted" }: Props) {
   const reduce = useReducedMotion();
   const stroke =
-    tone === "ink" ? "#14283D" : tone === "foam" ? "#E7E9E6" : "#8A8580";
+    tone === "ink"
+      ? "#14283D"
+      : tone === "foam"
+        ? "#F2EDE0"
+        : tone === "gold"
+          ? "#C5A15C"
+          : "#AF9F85";
   return (
     <svg
       viewBox="0 0 600 14"

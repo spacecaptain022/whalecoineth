@@ -58,13 +58,17 @@ type Item = (typeof REASONS)[number];
 function PillarCard({
   r,
   isActive,
+  isNarrow,
   onEnter,
   onLeave,
+  onMobileTap,
 }: {
   r: Item;
   isActive: boolean;
+  isNarrow: boolean;
   onEnter: () => void;
   onLeave: () => void;
+  onMobileTap: () => void;
 }) {
   const reduceMotion = useReducedMotion();
   const showBack = isActive && !reduceMotion;
@@ -85,7 +89,20 @@ function PillarCard({
       layout={false}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
-      className="relative min-h-[300px] [perspective:1400px] md:min-h-[280px]"
+      onClick={() => {
+        if (isNarrow) onMobileTap();
+      }}
+      onKeyDown={(e) => {
+        if (!isNarrow) return;
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onMobileTap();
+        }
+      }}
+      tabIndex={isNarrow ? 0 : undefined}
+      role={isNarrow ? "button" : undefined}
+      aria-expanded={isNarrow ? showBack : undefined}
+      className="relative min-h-[300px] [perspective:1400px] max-md:cursor-pointer md:min-h-[280px]"
       aria-labelledby={`pillar-${r.k}-title`}
       aria-describedby={loreId}
     >
@@ -96,7 +113,7 @@ function PillarCard({
       <div className="relative h-full min-h-[300px] w-full md:min-h-[280px]">
         {/* Front */}
         <motion.div
-          className="absolute inset-0 flex flex-col gap-4 rounded-2xl border border-foam/15 bg-accent-deep/55 p-8 backdrop-blur-[2px] md:p-10"
+          className="absolute inset-0 flex flex-col gap-4 rounded-2xl border border-gold/15 bg-accent-deep/55 p-8 backdrop-blur-[2px] md:p-10"
           style={{
             transformStyle: "preserve-3d",
             backfaceVisibility: "hidden",
@@ -110,29 +127,32 @@ function PillarCard({
           transition={showBack ? enterTrans : exitTrans}
         >
           <div className="flex items-center justify-between">
-            <span className="font-mono text-[11px] tracking-[0.2em] text-foam/55">
+            <span className="font-mono text-[11px] tracking-[0.2em] text-gold/55">
               {r.k}
             </span>
             <span
-              className={`h-px bg-foam/25 transition-all duration-500 ${
-                isActive ? "w-24 bg-foam/80" : "w-16"
+              className={`h-px bg-gold/25 transition-all duration-500 ${
+                isActive ? "w-24 bg-gold/80" : "w-16"
               }`}
             />
           </div>
           <h3
-            className="font-display text-display-sm text-foam"
+            className="font-display text-display-sm text-gold"
             id={`pillar-${r.k}-title`}
           >
             {r.title}
           </h3>
-          <p className="max-w-[42ch] text-[15px] leading-[1.6] text-foam/80">
+          <p className="max-w-[42ch] text-[15px] leading-[1.6] text-gold/80">
             {r.body}
+          </p>
+          <p className="mt-auto pt-3 text-center text-[10px] font-medium uppercase tracking-[0.28em] text-gold/50 md:hidden">
+            Press to read more
           </p>
         </motion.div>
 
         {/* Back */}
         <motion.div
-          className="absolute inset-0 flex flex-col justify-center gap-4 rounded-2xl border border-foam/25 bg-accent-deep/80 p-8 backdrop-blur-md md:p-10"
+          className="absolute inset-0 flex flex-col justify-center gap-4 rounded-2xl border border-gold/25 bg-accent-deep/80 p-8 backdrop-blur-md md:p-10"
           style={{
             transformStyle: "preserve-3d",
             backfaceVisibility: "hidden",
@@ -147,23 +167,23 @@ function PillarCard({
           transition={showBack ? enterTrans : exitTrans}
         >
           <div className="flex items-center justify-between">
-            <span className="eyebrow text-foam/50">{r.flipEyebrow}</span>
-            <span className="font-mono text-[11px] tracking-[0.2em] text-foam/45">
+            <span className="eyebrow text-gold/50">{r.flipEyebrow}</span>
+            <span className="font-mono text-[11px] tracking-[0.2em] text-gold/45">
               {r.k}
             </span>
           </div>
-          <p className="font-display text-[22px] leading-[1.25] text-foam md:text-[24px]">
+          <p className="font-display text-[22px] leading-[1.25] text-gold md:text-[24px]">
             {r.flipTitle}
           </p>
           <div className="flex flex-col gap-3">
             {r.flipLines.map((line) => (
               <p
                 key={line}
-                className="font-ink text-[17px] leading-[1.55] text-foam/85 md:text-[18px]"
+                className="font-ink text-[17px] leading-[1.55] text-gold/85 md:text-[18px]"
               >
-                <span className="text-foam/45">「</span>
+                <span className="text-gold/45">「</span>
                 {line}
-                <span className="text-foam/45">」</span>
+                <span className="text-gold/45">」</span>
               </p>
             ))}
           </div>
@@ -175,7 +195,23 @@ function PillarCard({
 
 export function WhyPillarGrid() {
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
+  const [mobileOpenIndex, setMobileOpenIndex] = React.useState<number | null>(
+    null,
+  );
+  const [isNarrow, setIsNarrow] = React.useState(false);
   const leaveTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  React.useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const sync = () => setIsNarrow(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  React.useEffect(() => {
+    if (!isNarrow) setMobileOpenIndex(null);
+  }, [isNarrow]);
 
   const handleEnter = React.useCallback((index: number) => {
     if (leaveTimerRef.current) {
@@ -204,9 +240,15 @@ export function WhyPillarGrid() {
         <RevealItem key={r.k} className="min-h-[300px] md:min-h-[280px]">
           <PillarCard
             r={r}
-            isActive={hoveredIndex === index}
+            isActive={
+              isNarrow ? mobileOpenIndex === index : hoveredIndex === index
+            }
+            isNarrow={isNarrow}
             onEnter={() => handleEnter(index)}
             onLeave={handleLeave}
+            onMobileTap={() =>
+              setMobileOpenIndex((prev) => (prev === index ? null : index))
+            }
           />
         </RevealItem>
       ))}

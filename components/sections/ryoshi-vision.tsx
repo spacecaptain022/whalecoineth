@@ -114,7 +114,7 @@ export function RyoshiVision() {
     <section
       id="lineage"
       aria-labelledby="lineage-title"
-      className="relative overflow-hidden bg-accent-deep text-foam"
+      className="relative overflow-hidden bg-accent-deep text-gold"
     >
       {/* Parallax background image — covers the full section */}
       <ParallaxImage
@@ -141,7 +141,7 @@ export function RyoshiVision() {
       >
         <path
           d="M0 12 C 240 0, 480 24, 720 12 S 1200 0, 1440 12"
-          stroke="#E7E9E6"
+          stroke="#C5A15C"
           strokeWidth="1"
           fill="none"
         />
@@ -158,24 +158,24 @@ export function RyoshiVision() {
         >
           <motion.span
             variants={fadeRise}
-            className="eyebrow flex items-center justify-center gap-3 text-foam/60"
+            className="eyebrow flex items-center justify-center gap-3 text-gold/60"
           >
             <span>Lineage</span>
-            <span className="h-px w-10 bg-foam/30" />
+            <span className="h-px w-10 bg-gold/30" />
             <span>The Inheritance</span>
           </motion.span>
 
           <motion.h2
             id="lineage-title"
             variants={clipReveal}
-            className="font-display text-display-lg text-foam md:text-display-xl max-w-[min(28ch,100%)] leading-[1.05]"
+            className="font-display text-display-lg text-gold md:text-display-xl max-w-[min(28ch,100%)] leading-[1.05]"
           >
             Ryoshi’s Vision. Whale. And the Deep.
           </motion.h2>
 
           <motion.p
             variants={fadeRise}
-            className="font-ink max-w-[min(52ch,100%)] text-[20px] leading-[1.45] text-foam/80 md:text-[24px]"
+            className="font-ink max-w-[min(52ch,100%)] text-[20px] leading-[1.45] text-gold/80 md:text-[24px]"
           >
             The strongest projects are the ones no single hand can ever fully
             control.
@@ -183,10 +183,10 @@ export function RyoshiVision() {
 
           <motion.div
             variants={fadeRise}
-            className="mt-1 flex items-center gap-4 text-[11px] tracking-[0.3em] uppercase text-foam/45"
+            className="mt-1 flex items-center gap-4 text-[11px] tracking-[0.3em] uppercase text-gold/45"
           >
             <span>柴</span>
-            <span className="h-px w-12 bg-foam/30" />
+            <span className="h-px w-12 bg-gold/30" />
             <span>鯨</span>
           </motion.div>
         </motion.div>
@@ -200,14 +200,14 @@ export function RyoshiVision() {
               initial="hidden"
               whileInView="show"
               viewport={scrollVp}
-              className="flex w-full flex-col items-center gap-5 border-b border-foam/10 pb-12 text-center last:border-b-0 last:pb-0 md:gap-6 md:pb-14"
+              className="flex w-full flex-col items-center gap-5 border-b border-gold/10 pb-12 text-center last:border-b-0 last:pb-0 md:gap-6 md:pb-14"
             >
               <div className="flex flex-col items-center gap-3">
-                <span className="font-ink text-[30px] leading-none text-foam/90 md:text-[38px]">
+                <span className="font-ink text-[30px] leading-none text-gold/90 md:text-[38px]">
                   {s.numeral}
                 </span>
-                <span className="h-px w-14 bg-foam/30 md:w-16" />
-                <h3 className="eyebrow max-w-[min(40ch,100%)] text-foam/70">
+                <span className="h-px w-14 bg-gold/30 md:w-16" />
+                <h3 className="eyebrow max-w-[min(40ch,100%)] text-gold/70">
                   {s.title}
                 </h3>
               </div>
@@ -216,7 +216,7 @@ export function RyoshiVision() {
                 {s.lines.map((line, i) => (
                   <p
                     key={i}
-                    className="font-display text-[17px] leading-[1.6] text-foam/95 md:text-[20px]"
+                    className="font-display text-[17px] leading-[1.6] text-gold/95 md:text-[20px]"
                   >
                     {line}
                   </p>
@@ -232,17 +232,17 @@ export function RyoshiVision() {
           initial="hidden"
           whileInView="show"
           viewport={scrollVp}
-          className="mx-auto mt-20 flex w-full max-w-[920px] flex-col items-center gap-6 border-t border-foam/15 pt-14 text-center md:mt-24 md:gap-7 md:pt-16"
+          className="mx-auto mt-20 flex w-full max-w-[920px] flex-col items-center gap-6 border-t border-gold/15 pt-14 text-center md:mt-24 md:gap-7 md:pt-16"
         >
-          <span className="eyebrow text-foam/55">The Oath</span>
-          <p className="font-display text-display-md text-foam md:text-display-lg max-w-[min(34ch,100%)] leading-[1.2]">
+          <span className="eyebrow text-gold/55">The Oath</span>
+          <p className="font-display text-display-md text-gold md:text-display-lg max-w-[min(34ch,100%)] leading-[1.2]">
             The myth is owned by everyone.
           </p>
-          <p className="max-w-[min(62ch,100%)] text-[15px] leading-[1.65] text-foam/75 md:text-[18px]">
+          <p className="max-w-[min(62ch,100%)] text-[15px] leading-[1.65] text-gold/75 md:text-[18px]">
             The levers are visible to everyone. And the weight of the pod, not
             the will of any one voice, decides where the tide turns next.
           </p>
-          <p className="font-ink pt-1 text-[20px] text-foam/85 md:text-[24px]">
+          <p className="font-ink pt-1 text-[20px] text-gold/85 md:text-[24px]">
             No face. No leader. No central script.
           </p>
         </motion.div>
@@ -257,7 +257,7 @@ export function RyoshiVision() {
       >
         <path
           d="M0 12 C 240 24, 480 0, 720 12 S 1200 24, 1440 12"
-          stroke="#E7E9E6"
+          stroke="#C5A15C"
           strokeWidth="1"
           fill="none"
         />

@@ -8,7 +8,7 @@ export function Transmission() {
     <section
       id="transmission"
       aria-labelledby="transmission-title"
-      className="relative overflow-hidden border-t border-foam/10 bg-accent-deep text-foam"
+      className="relative overflow-hidden border-t border-gold/15 bg-accent-deep text-gold"
     >
       <div
         aria-hidden="true"
@@ -22,18 +22,18 @@ export function Transmission() {
       <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6 md:px-8 py-20 md:py-28">
         <Reveal>
           <RevealItem className="mx-auto flex max-w-[640px] flex-col items-center gap-6 text-center">
-            <span className="eyebrow text-foam/55">Transmission</span>
+            <span className="eyebrow text-gold/60">Transmission</span>
             <h2
               id="transmission-title"
-              className="font-display text-[clamp(1.75rem,4vw,2.75rem)] font-bold uppercase leading-[1.05] tracking-[0.06em] text-[#c8cac4]"
+              className="font-display text-[clamp(1.75rem,4vw,2.75rem)] font-bold uppercase leading-[1.05] tracking-[0.06em] text-gold"
             >
               Join WhalecoinETH on X
             </h2>
-            <p className="max-w-[42ch] text-[17px] leading-[1.65] text-foam/85">
+            <p className="max-w-[42ch] text-[17px] leading-[1.65] text-gold/90">
               Real-time notes from the pod: launches, liquidity, and the slow
               current under the market. Nothing hidden. The official handle is
               always{" "}
-              <span className="font-mono text-[15px] text-foam">
+              <span className="font-mono text-[15px] text-gold">
                 @{X_HANDLE}
               </span>
               .
@@ -52,7 +52,7 @@ export function Transmission() {
                 href={SOCIALS.x}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[12px] tracking-[0.2em] uppercase text-foam/45 transition-colors hover:text-foam/70"
+                className="text-[12px] tracking-[0.2em] uppercase text-gold/50 transition-colors hover:text-gold/80"
               >
                 x.com/{X_HANDLE}
               </a>

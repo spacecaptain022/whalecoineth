@@ -21,7 +21,7 @@ export function FinalCta() {
     <section
       id="enter"
       aria-labelledby="cta-title"
-      className="relative overflow-hidden bg-accent-deep text-foam"
+      className="relative overflow-hidden bg-accent-deep text-gold"
     >
       {/* Parallax background image */}
       <ParallaxImage src="/brand/people.png" opacityClass="opacity-40" strength={10} />
@@ -44,7 +44,7 @@ export function FinalCta() {
       >
         <path
           d="M0 12 C 240 0, 480 24, 720 12 S 1200 0, 1440 12"
-          stroke="#E7E9E6"
+          stroke="#C5A15C"
           strokeWidth="1"
           fill="none"
         />
@@ -60,20 +60,20 @@ export function FinalCta() {
         >
           <motion.span
             variants={fadeRise}
-            className="eyebrow text-foam/70"
+            className="eyebrow text-gold/70"
           >
             The Final Signal
           </motion.span>
           <motion.h2
             id="cta-title"
             variants={clipReveal}
-            className="font-display text-display-xl text-foam max-w-[20ch]"
+            className="font-display text-display-xl text-gold max-w-[20ch]"
           >
             The current is shifting.
           </motion.h2>
           <motion.p
             variants={fadeRise}
-            className="font-ink text-[24px] md:text-[30px] text-foam/85"
+            className="font-ink text-[24px] md:text-[30px] text-gold/85"
           >
             Enter with weight.
           </motion.p>
@@ -90,7 +90,7 @@ export function FinalCta() {
           </motion.div>
           <motion.p
             variants={fadeRise}
-            className="mt-4 text-[12px] tracking-[0.2em] uppercase text-foam/55"
+            className="mt-4 text-[12px] tracking-[0.2em] uppercase text-gold/55"
           >
             When the Whale rises, the market feels it. Be there before the wake.
           </motion.p>

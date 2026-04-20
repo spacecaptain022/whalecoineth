@@ -35,7 +35,7 @@ export function SectionTitle({
         <div
           className={cn(
             "eyebrow flex items-center gap-3",
-            isDark && "text-foam/60",
+            isDark && "text-gold/65",
           )}
         >
           <span>{eyebrow}</span>
@@ -45,7 +45,7 @@ export function SectionTitle({
         id={id}
         className={cn(
           "font-display text-display-md max-w-3xl",
-          isDark ? "text-foam" : "text-text",
+          isDark ? "text-gold" : "text-text",
         )}
       >
         {title}
@@ -54,7 +54,7 @@ export function SectionTitle({
         <p
           className={cn(
             "max-w-xl text-[17px] leading-[1.55]",
-            isDark ? "text-foam/75" : "text-text-muted",
+            isDark ? "text-gold/85" : "text-text-muted",
           )}
         >
           {subtitle}
@@ -67,7 +67,7 @@ export function SectionTitle({
             align === "center" && "mx-auto",
           )}
         >
-          <DividerWave tone={isDark ? "foam" : "muted"} />
+          <DividerWave tone={isDark ? "gold" : "muted"} />
         </div>
       )}
     </div>

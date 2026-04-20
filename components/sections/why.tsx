@@ -8,7 +8,7 @@ export function Why() {
     <section
       id="why"
       aria-labelledby="why-title"
-      className="relative overflow-hidden border-t border-surface-dark/40 bg-accent-deep text-foam"
+      className="relative overflow-hidden border-t border-surface-dark/40 bg-accent-deep text-gold"
     >
       {/* Parallax background image */}
       <ParallaxImage src="/brand/4pillars.png" opacityClass="opacity-40" strength={10} />
