@@ -30,8 +30,11 @@ export function Header() {
           : "bg-transparent border-b border-transparent",
       )}
     >
-      <div className="relative mx-auto grid h-16 max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-4 sm:px-6 md:px-8">
-        <Link href="/" className="flex items-center gap-3 group justify-self-start">
+      <div className="relative mx-auto grid h-16 max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center gap-0 px-4 sm:px-6 md:gap-4 md:px-8">
+        <Link
+          href="/"
+          className="col-start-1 flex items-center gap-3 justify-self-start group"
+        >
           <span className="relative h-10 w-10 overflow-hidden rounded-full border border-accent-deep/50 shadow-[inset_0_0_0_1px_rgba(242,237,224,0.4)] transition-transform duration-500 ease-[var(--ease-tide)] group-hover:-translate-y-0.5">
             <Image
               src="/brand/logo.jpeg"
@@ -47,7 +50,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8 justify-self-center">
+        <nav className="col-start-2 hidden items-center justify-self-center gap-8 md:flex">
           {NAV.map((item) => (
             <a
               key={item.href}
@@ -59,14 +62,14 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3 justify-self-end">
+        <div className="col-start-3 flex min-w-0 w-full items-center justify-end gap-2 sm:gap-3 md:w-auto md:justify-self-end">
           <Button href={SOCIALS.buy} external size="md" className="hidden sm:inline-flex">
             Enter
           </Button>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl text-text hover:bg-surface/60"
+            className="md:hidden inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-text hover:bg-surface/60"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
           >
