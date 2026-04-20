@@ -134,33 +134,40 @@ export function Header() {
                 </a>
               ))
             : null}
-          <div className={cn("flex items-center gap-9", hasNav && "mt-3")}>
-            <Button
-              href={SOCIALS.whaleWatching}
-              external
-              size="lg"
-              className="min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap"
-            >
-              <LineChart className="h-4 w-4 shrink-0" aria-hidden />
-              Whale Watching Dashboard
-            </Button>
-            <a
-              href={SOCIALS.x}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-              className="shrink-0 rounded-md text-accent-deep transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-deep"
-              aria-label={`Whalecoin on X (@${X_HANDLE})`}
-            >
-              <Image
-                src="/brand/xlogo.svg"
-                alt=""
-                width={24}
-                height={24}
-                className="h-6 w-6"
-                aria-hidden
-              />
-            </a>
+          <div
+            className={cn(
+              "flex justify-center px-1",
+              hasNav && "mt-3",
+            )}
+          >
+            <div className="flex max-w-full items-center justify-center gap-2.5">
+              <Button
+                href={SOCIALS.whaleWatching}
+                external
+                size="lg"
+                className="shrink-0 items-center justify-center gap-2 whitespace-nowrap px-4"
+              >
+                <LineChart className="h-4 w-4 shrink-0" aria-hidden />
+                Whale Watching Dashboard
+              </Button>
+              <a
+                href={SOCIALS.x}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="shrink-0 rounded-md text-accent-deep transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-deep"
+                aria-label={`Whalecoin on X (@${X_HANDLE})`}
+              >
+                <Image
+                  src="/brand/xlogo.svg"
+                  alt=""
+                  width={24}
+                  height={24}
+                  className="h-6 w-6"
+                  aria-hidden
+                />
+              </a>
+            </div>
           </div>
         </nav>
       </div>

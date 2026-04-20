@@ -16,6 +16,9 @@ export function Why() {
         opacityClass="opacity-40"
         strength={10}
         mobileHorizontalPan
+        mobileScrollZoom
+        mobileZoomFrom={1.52}
+        mobileZoomTo={1}
       />
       {/* Readability gradient */}
       <div

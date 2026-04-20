@@ -34,6 +34,15 @@ type Props = {
   imageClassName?: string;
   /** Disable priority loading. */
   priority?: boolean;
+  /**
+   * Below `lg` (1024px), scale from `mobileZoomFrom` → `mobileZoomTo` as the section
+   * scrolls through the viewport (zoom-out while scrolling down).
+   */
+  mobileScrollZoom?: boolean;
+  /** Scale at the start of scroll progress (narrow only). Default 1.14 */
+  mobileZoomFrom?: number;
+  /** Scale at the end of scroll progress (narrow only). Default 1 */
+  mobileZoomTo?: number;
 };
 
 /**
@@ -50,6 +59,9 @@ export function ParallaxImage({
   mobilePanWidthPct = 220,
   imageClassName,
   priority = false,
+  mobileScrollZoom = false,
+  mobileZoomFrom = 1.14,
+  mobileZoomTo = 1,
 }: Props) {
   const ref = React.useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
@@ -88,6 +100,11 @@ export function ParallaxImage({
     return `${-v * fullSpan}%`;
   });
 
+  const scale = useTransform(scrollYProgress, (v) => {
+    if (reduced || !mobileScrollZoom || !isNarrow) return 1;
+    return mobileZoomFrom + (mobileZoomTo - mobileZoomFrom) * v;
+  });
+
   const image = (
     <Image
       src={src}
@@ -109,7 +126,12 @@ export function ParallaxImage({
     <motion.div
       ref={ref}
       aria-hidden="true"
-      style={{ y, willChange: "transform" }}
+      style={{
+        y,
+        scale,
+        transformOrigin: mobileScrollZoom ? "center center" : undefined,
+        willChange: "transform",
+      }}
       className={cn(
         "pointer-events-none absolute inset-x-0 -top-[12%] -bottom-[12%] select-none",
         opacityClass,

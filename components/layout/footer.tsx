@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { CopyButton } from "@/components/ui/copy-button";
-import { SOCIALS, TOKEN } from "@/lib/constants";
+import { DEXSCREENER_URL, ETHERSCAN_URL, SOCIALS, TOKEN } from "@/lib/constants";
 
 const iconLinkClass =
   "flex h-10 w-10 items-center justify-center rounded-lg border border-surface-dark/50 bg-foam/30 text-accent-deep transition-colors duration-200 ease-[var(--ease-ink)] hover:bg-foam/60 hover:border-accent-deep/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-deep";
@@ -46,7 +46,7 @@ export function Footer() {
               />
             </a>
             <a
-              href={SOCIALS.dexscreener}
+              href={DEXSCREENER_URL}
               target="_blank"
               rel="noopener noreferrer"
               className={`${iconLinkClass} overflow-hidden p-1`}
@@ -61,7 +61,7 @@ export function Footer() {
               />
             </a>
             <a
-              href={SOCIALS.etherscan}
+              href={ETHERSCAN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className={`${iconLinkClass} overflow-hidden p-1`}
