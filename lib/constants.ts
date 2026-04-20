@@ -1,0 +1,30 @@
+export const TOKEN = {
+  ticker: "WHALE",
+  chain: "Ethereum",
+  chainId: 1,
+  contract: "0x0000000000000000000000000000000000000000",
+  contractShort: "0x0000…0000",
+  supply: "1,000,000,000",
+  tax: "0 / 0",
+  liquidity: "Locked",
+  ownership: "Renounced",
+  launch: "TBA",
+} as const;
+
+/** Official X handle (no @) — used for embeds and links. */
+export const X_HANDLE = "whalecoineth" as const;
+
+export const SOCIALS = {
+  x: `https://x.com/${X_HANDLE}`,
+  telegram: "https://t.me/",
+  dexscreener: "https://dexscreener.com/",
+  etherscan: "https://etherscan.io/",
+  buy: "https://app.uniswap.org/",
+} as const;
+
+export const NAV = [
+  { label: "The Deep", href: "#deep" },
+  { label: "Registry", href: "#registry" },
+  { label: "Tides", href: "#tides" },
+  { label: "X", href: "#transmission" },
+] as const;

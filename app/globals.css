@@ -1,26 +1,195 @@
 @import "tailwindcss";
 
+@theme {
+  --color-bg: #c8b38d;
+  --color-surface: #b7a27d;
+  --color-surface-dark: #8f7f66;
+  --color-foam: #ddd0b9;
+  --color-text: #243649;
+  --color-text-muted: #6f7d83;
+  --color-accent-deep: #14283d;
+
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-ink: var(--font-ink);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --ease-tide: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-ink: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --grain-url: url("/textures/grain.svg");
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: var(--color-accent-deep);
+  color: var(--color-foam);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-accent-deep);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.font-display {
+  font-family: var(--font-display), "Noto Serif JP", "Hiragino Mincho ProN",
+    "Yu Mincho", ui-serif, Georgia, serif;
+  letter-spacing: 0.005em;
+  font-feature-settings: "palt" on;
+}
+
+.font-ink {
+  font-family: var(--font-ink), "Shippori Antique", "Noto Serif JP",
+    "Hiragino Mincho ProN", "Yu Mincho", ui-serif, Georgia, serif;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.wordmark {
+  font-family: var(--font-display), "Noto Serif JP", "Hiragino Mincho ProN",
+    "Yu Mincho", ui-serif, Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* Eyebrow label utility */
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* Fine grain shimmer overlay (on top of parchment) */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+  background-image: var(--grain-url);
+  background-size: 220px 220px;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+}
+
+/* Ink hover sweep for links */
+.ink-link {
+  position: relative;
+  display: inline-block;
+}
+.ink-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 320ms var(--ease-tide);
+}
+.ink-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Fluid display sizes */
+.text-display-xl {
+  font-size: clamp(3.25rem, 8vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+.text-display-lg {
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+.text-display-md {
+  font-size: clamp(1.875rem, 4vw, 3.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+}
+.text-display-sm {
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.15;
+}
+
+/* Respect reduced motion globally for ambient loops */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Drift + shimmer keyframes for ambient motion */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, -6px, 0);
+  }
+  50% {
+    transform: translate3d(0, 6px, 0);
+  }
+}
+@keyframes halo {
+  0%,
+  100% {
+    transform: rotate(-0.8deg);
+  }
+  50% {
+    transform: rotate(0.8deg);
+  }
+}
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 0.06;
+  }
+  50% {
+    opacity: 0.1;
+  }
+}
+.animate-drift {
+  animation: drift 10s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-halo {
+  animation: halo 14s ease-in-out infinite;
+  transform-origin: center;
+}
+.animate-shimmer {
+  animation: shimmer 12s ease-in-out infinite;
 }
