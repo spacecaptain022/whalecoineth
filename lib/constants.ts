@@ -18,13 +18,14 @@ export const SOCIALS = {
   x: `https://x.com/${X_HANDLE}`,
   telegram: "https://t.me/",
   dexscreener: "https://dexscreener.com/",
+  /** Pair / chart page for “watch the tide” — set to your Dexscreener pair URL when live. */
+  whaleWatching: "https://dexscreener.com/",
   etherscan: "https://etherscan.io/",
   buy: "https://app.uniswap.org/",
 } as const;
 
 export const NAV = [
   { label: "The Deep", href: "#deep" },
-  { label: "Registry", href: "#registry" },
   { label: "Tides", href: "#tides" },
   { label: "X", href: "#transmission" },
 ] as const;

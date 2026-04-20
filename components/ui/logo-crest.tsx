@@ -7,7 +7,7 @@ type Props = {
 };
 
 export function LogoCrest({ size = 44, className, tone = "ink" }: Props) {
-  const stroke = tone === "foam" ? "#F2EDE0" : "#14283D";
+  const stroke = tone === "foam" ? "#E7E9E6" : "#14283D";
   return (
     <svg
       width={size}
@@ -55,7 +55,7 @@ export function LogoCrest({ size = 44, className, tone = "ink" }: Props) {
         d="M22 26 C 24 22, 30 20, 34 22 C 38 23, 41 25, 43 27 L 46 24 L 45.6 28 L 48 28 L 45.6 30 L 46 33 L 43 30 C 41 32, 36 33, 32 32 C 27 31, 23 29, 22 26 Z"
         fill={stroke}
       />
-      <circle cx="25.5" cy="25.5" r="0.8" fill="#E2D2B6" />
+      <circle cx="25.5" cy="25.5" r="0.8" fill="#C5C8C2" />
     </svg>
   );
 }

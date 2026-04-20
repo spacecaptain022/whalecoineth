@@ -79,7 +79,7 @@ export function LoreManifesto() {
                   variants={clipReveal}
                   className={cn(
                     "font-display text-display-md leading-[1.25] text-text md:text-display-lg md:leading-[1.22]",
-                    "[text-shadow:0_1px_0_rgb(255_253_248_/_0.96),0_0_1.25em_rgb(255_251_244_/_0.55)]",
+                    "[text-shadow:0_1px_0_rgb(236_238_235_/_0.96),0_0_1.25em_rgb(232_234_231_/_0.55)]",
                     stanza.weight === "bold" ? "font-bold" : "font-medium",
                     si > 0 && li === 0 && "mt-12"
                   )}
@@ -90,7 +90,7 @@ export function LoreManifesto() {
             )}
             <motion.p
               variants={clipReveal}
-              className="font-display mt-10 pt-4 text-[22px] font-semibold leading-snug text-accent-deep md:text-[28px] [text-shadow:0_1px_0_rgb(255_253_248_/_0.98),0_0_1em_rgb(255_251_244_/_0.65)]"
+              className="font-display mt-10 pt-4 text-[22px] font-semibold leading-snug text-accent-deep md:text-[28px] [text-shadow:0_1px_0_rgb(236_238_235_/_0.98),0_0_1em_rgb(232_234_231_/_0.65)]"
             >
               Conviction moves first. Explanation comes later.
             </motion.p>

@@ -44,7 +44,7 @@ export function FinalCta() {
       >
         <path
           d="M0 12 C 240 0, 480 24, 720 12 S 1200 0, 1440 12"
-          stroke="#F2EDE0"
+          stroke="#E7E9E6"
           strokeWidth="1"
           fill="none"
         />

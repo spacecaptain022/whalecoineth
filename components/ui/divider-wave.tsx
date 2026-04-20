@@ -12,7 +12,7 @@ type Props = {
 export function DividerWave({ className, tone = "muted" }: Props) {
   const reduce = useReducedMotion();
   const stroke =
-    tone === "ink" ? "#14283D" : tone === "foam" ? "#F2EDE0" : "#AF9F85";
+    tone === "ink" ? "#14283D" : tone === "foam" ? "#E7E9E6" : "#8A8580";
   return (
     <svg
       viewBox="0 0 600 14"

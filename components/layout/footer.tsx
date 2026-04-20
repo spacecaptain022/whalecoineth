@@ -7,10 +7,8 @@ const NAV_COLS = [
     title: "The Signal",
     links: [
       { label: "The Deep", href: "#deep" },
-      { label: "The Registry", href: "#registry" },
       { label: "Lineage", href: "#lineage" },
       { label: "The Tides", href: "#tides" },
-      { label: "The Surface", href: "#surface" },
       { label: "Transmission", href: "#transmission" },
     ],
   },

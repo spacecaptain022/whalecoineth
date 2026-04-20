@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { LineChart, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NAV, SOCIALS } from "@/lib/constants";
 import { cn } from "@/lib/cn";
@@ -30,12 +30,12 @@ export function Header() {
           : "bg-transparent border-b border-transparent",
       )}
     >
-      <div className="relative mx-auto grid h-16 max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center gap-0 px-4 sm:px-6 md:gap-4 md:px-8">
+      <div className="relative mx-auto grid h-16 max-w-[1440px] grid-cols-[1fr_auto] items-center gap-3 px-4 sm:px-6 md:grid-cols-[1fr_auto_1fr] md:gap-4 md:px-8">
         <Link
           href="/"
-          className="col-start-1 flex items-center gap-3 justify-self-start group"
+          className="col-start-1 row-start-1 flex min-w-0 items-center gap-2 justify-self-start group sm:gap-3 md:justify-self-start"
         >
-          <span className="relative h-10 w-10 overflow-hidden rounded-full border border-accent-deep/50 shadow-[inset_0_0_0_1px_rgba(242,237,224,0.4)] transition-transform duration-500 ease-[var(--ease-tide)] group-hover:-translate-y-0.5">
+          <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-accent-deep/50 shadow-[inset_0_0_0_1px_rgba(231,233,230,0.45)] transition-transform duration-500 ease-[var(--ease-tide)] group-hover:-translate-y-0.5">
             <Image
               src="/brand/logo.jpeg"
               alt="WhalecoinETH"
@@ -45,12 +45,12 @@ export function Header() {
               priority
             />
           </span>
-          <span className="wordmark text-[18px] text-text">
+          <span className="wordmark truncate text-[16px] text-text sm:text-[18px]">
             Whalecoin<span className="text-text-muted">ETH</span>
           </span>
         </Link>
 
-        <nav className="col-start-2 hidden items-center justify-self-center gap-8 md:flex">
+        <nav className="col-start-2 row-start-1 hidden items-center justify-self-center gap-8 md:flex">
           {NAV.map((item) => (
             <a
               key={item.href}
@@ -62,20 +62,27 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="col-start-3 flex min-w-0 w-full items-center justify-end gap-2 sm:gap-3 md:w-auto md:justify-self-end">
-          <Button href={SOCIALS.buy} external size="md" className="hidden sm:inline-flex">
-            Enter
-          </Button>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="md:hidden inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-text hover:bg-surface/60"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
+        <div className="hidden md:col-start-3 md:row-start-1 md:flex md:w-auto md:justify-self-end">
+          <Button
+            href={SOCIALS.whaleWatching}
+            external
+            size="md"
+            className="inline-flex h-10 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap px-3 text-[13px] leading-none"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+            <LineChart className="h-4 w-4 shrink-0" aria-hidden />
+            View Whale Watching
+          </Button>
         </div>
+
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="col-start-2 row-start-1 inline-flex h-10 w-10 shrink-0 items-center justify-center justify-self-end rounded-xl text-text hover:bg-surface/60 md:hidden"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
 
       {/* Mobile drawer */}
@@ -97,12 +104,13 @@ export function Header() {
             </a>
           ))}
           <Button
-            href={SOCIALS.buy}
+            href={SOCIALS.whaleWatching}
             external
             size="lg"
-            className="mt-3 w-full justify-center"
+            className="mt-3 w-full items-center justify-center gap-2 whitespace-nowrap"
           >
-            Enter the Current
+            <LineChart className="h-4 w-4 shrink-0" aria-hidden />
+            View Whale Watching
           </Button>
         </nav>
       </div>

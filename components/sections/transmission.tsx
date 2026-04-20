@@ -15,7 +15,7 @@ export function Transmission() {
         className="pointer-events-none absolute inset-0 opacity-[0.07]"
         style={{
           background:
-            "radial-gradient(ellipse 80% 50% at 20% 40%, rgba(221,208,185,0.5) 0%, transparent 55%)",
+            "radial-gradient(ellipse 80% 50% at 20% 40%, rgba(198,200,196,0.4) 0%, transparent 55%)",
         }}
       />
 
@@ -25,7 +25,7 @@ export function Transmission() {
             <span className="eyebrow text-foam/55">Transmission</span>
             <h2
               id="transmission-title"
-              className="font-display text-[clamp(1.75rem,4vw,2.75rem)] font-bold uppercase leading-[1.05] tracking-[0.06em] text-[#c4a968]"
+              className="font-display text-[clamp(1.75rem,4vw,2.75rem)] font-bold uppercase leading-[1.05] tracking-[0.06em] text-[#c8cac4]"
             >
               Join WhalecoinETH on X
             </h2>

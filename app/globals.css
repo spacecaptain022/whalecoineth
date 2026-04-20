@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #c8b38d;
-  --color-surface: #b7a27d;
-  --color-surface-dark: #8f7f66;
-  --color-foam: #ddd0b9;
+  /* Cool greige / taupe parchment (less yellow than the old gold-tan) */
+  --color-bg: #b8b4ab;
+  --color-surface: #a7a29a;
+  --color-surface-dark: #6f6a62;
+  --color-foam: #e0ded7;
   --color-text: #243649;
   --color-text-muted: #6f7d83;
   --color-accent-deep: #14283d;
