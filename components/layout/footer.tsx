@@ -3,31 +3,31 @@ import { CopyButton } from "@/components/ui/copy-button";
 import { SOCIALS, TOKEN } from "@/lib/constants";
 
 const iconLinkClass =
-  "flex h-12 w-12 items-center justify-center rounded-xl border border-surface-dark/50 bg-foam/30 text-accent-deep transition-colors duration-200 ease-[var(--ease-ink)] hover:bg-foam/60 hover:border-accent-deep/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-deep";
+  "flex h-10 w-10 items-center justify-center rounded-lg border border-surface-dark/50 bg-foam/30 text-accent-deep transition-colors duration-200 ease-[var(--ease-ink)] hover:bg-foam/60 hover:border-accent-deep/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-deep";
 
 const dexscreenerLogoSrc =
   "/brand/" + encodeURIComponent("dexscreener logo 1 [Vectorized].svg");
 
 export function Footer() {
   return (
-    <footer className="relative z-0 mt-24 rounded-t-2xl border-t border-surface-dark/50 bg-surface/40">
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 md:px-8 py-14">
-        <div className="flex flex-col items-center text-center gap-8">
-          <div className="flex flex-col items-center gap-3">
-            <span className="relative h-14 w-14 overflow-hidden rounded-full border border-accent-deep/50">
+    <footer className="relative z-0 mt-16 rounded-t-2xl border-t border-surface-dark/50 bg-surface/40">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 md:px-8 py-8 md:py-9">
+        <div className="flex flex-col items-center text-center gap-5">
+          <div className="flex flex-col items-center gap-2">
+            <span className="relative h-11 w-11 overflow-hidden rounded-full border border-accent-deep/50">
               <Image
                 src="/brand/logo.jpeg"
                 alt="Whalecoin"
                 fill
-                sizes="56px"
+                sizes="44px"
                 className="object-cover scale-[1.05]"
               />
             </span>
-            <span className="wordmark text-[18px] text-text">Whalecoin</span>
+            <span className="wordmark text-[16px] text-text">Whalecoin</span>
           </div>
 
           <nav
-            className="flex flex-wrap items-center justify-center gap-3"
+            className="flex flex-wrap items-center justify-center gap-2.5"
             aria-label="Social and explorers"
           >
             <a
@@ -49,15 +49,15 @@ export function Footer() {
               href={SOCIALS.dexscreener}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${iconLinkClass} overflow-hidden p-1.5`}
+              className={`${iconLinkClass} overflow-hidden p-1`}
               aria-label="Dexscreener"
             >
               <Image
                 src={dexscreenerLogoSrc}
                 alt=""
-                width={40}
-                height={40}
-                className="h-9 w-9 object-contain"
+                width={32}
+                height={32}
+                className="h-8 w-8 object-contain"
               />
             </a>
             <a
@@ -70,14 +70,14 @@ export function Footer() {
               <Image
                 src="/brand/etherscan-mark.svg"
                 alt=""
-                width={40}
-                height={40}
-                className="h-10 w-10 object-contain"
+                width={32}
+                height={32}
+                className="h-8 w-8 object-contain"
               />
             </a>
           </nav>
 
-          <div className="flex flex-col items-center gap-2 max-w-full">
+          <div className="flex flex-col items-center gap-1.5 max-w-full">
             <span className="eyebrow">Contract</span>
             <span className="font-mono text-[12px] sm:text-[13px] text-text/80 break-all px-2">
               {TOKEN.contract}

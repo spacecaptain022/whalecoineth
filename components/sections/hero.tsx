@@ -160,7 +160,7 @@ export function Hero() {
             variants={fadeRise}
             className="max-w-[54ch] text-[13px] sm:text-[14px] tracking-[0.22em] uppercase leading-[1.7] text-text-muted"
           >
-            Gather with ETH whales who move in silence, hold with weight
+            Gather with Ethereum whales who move in silence, hold with weight
             <span className="hidden sm:inline"> </span>
             <span className="sm:hidden">
               <br />
@@ -174,7 +174,7 @@ export function Hero() {
             className="mt-6 flex flex-wrap items-center justify-center gap-3"
           >
             <Button href={SOCIALS.claimEligibility} external size="lg">
-              Join Them
+              Check Eligibility
               <ArrowUpRight className="h-4 w-4" />
             </Button>
             <Button href={SOCIALS.dexscreener} external variant="secondary" size="lg">

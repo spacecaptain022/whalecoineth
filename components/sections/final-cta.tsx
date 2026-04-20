@@ -67,9 +67,11 @@ export function FinalCta() {
           <motion.h2
             id="cta-title"
             variants={clipReveal}
-            className="font-display text-display-xl text-gold max-w-[min(28ch,100%)]"
+            className="font-display text-display-xl font-bold text-gold max-w-[min(56ch,100%)]"
           >
-            The Whales Gather on Ethereum
+            <span className="block text-[0.5em]">
+              The Whales Gather on Ethereum
+            </span>
           </motion.h2>
           <motion.div variants={fadeRise}>
             <Button
@@ -78,7 +80,7 @@ export function FinalCta() {
               size="lg"
               className="bg-foam text-accent-deep hover:bg-bg hover:text-accent-deep"
             >
-              Join Them
+              Check Eligibility
               <ArrowUpRight className="h-4 w-4" />
             </Button>
           </motion.div>

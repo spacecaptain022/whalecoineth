@@ -72,10 +72,19 @@ export function Header() {
 
         <div
           className={cn(
-            "hidden md:row-start-1 md:flex md:w-auto md:items-center md:justify-self-end md:gap-2.5",
+            "hidden md:row-start-1 md:flex md:w-auto md:items-center md:justify-self-end md:gap-[1.875rem]",
             hasNav ? "md:col-start-3" : "md:col-start-2",
           )}
         >
+          <Button
+            href={SOCIALS.whaleWatching}
+            external
+            size="md"
+            className="inline-flex h-10 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap px-3 text-[13px] leading-none"
+          >
+            <LineChart className="h-4 w-4 shrink-0" aria-hidden />
+            Whale Watching Dashboard
+          </Button>
           <a
             href={SOCIALS.x}
             target="_blank"
@@ -92,15 +101,6 @@ export function Header() {
               aria-hidden
             />
           </a>
-          <Button
-            href={SOCIALS.whaleWatching}
-            external
-            size="md"
-            className="inline-flex h-10 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap px-3 text-[13px] leading-none"
-          >
-            <LineChart className="h-4 w-4 shrink-0" aria-hidden />
-            Whale Watching Dashboard
-          </Button>
         </div>
 
         <button
@@ -134,7 +134,16 @@ export function Header() {
                 </a>
               ))
             : null}
-          <div className={cn("flex items-center gap-3", hasNav && "mt-3")}>
+          <div className={cn("flex items-center gap-9", hasNav && "mt-3")}>
+            <Button
+              href={SOCIALS.whaleWatching}
+              external
+              size="lg"
+              className="min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap"
+            >
+              <LineChart className="h-4 w-4 shrink-0" aria-hidden />
+              Whale Watching Dashboard
+            </Button>
             <a
               href={SOCIALS.x}
               target="_blank"
@@ -152,15 +161,6 @@ export function Header() {
                 aria-hidden
               />
             </a>
-            <Button
-              href={SOCIALS.whaleWatching}
-              external
-              size="lg"
-              className="min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap"
-            >
-              <LineChart className="h-4 w-4 shrink-0" aria-hidden />
-              Whale Watching Dashboard
-            </Button>
           </div>
         </nav>
       </div>
