@@ -1,9 +1,11 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/cn";
 import {
+  EASE_TIDE,
   clipReveal,
   fadeRise,
   floatViewport,
@@ -57,9 +59,35 @@ const MEME_LOGO_PLACEMENT: {
   { file: "spx logo.png", top: "76%", left: "70%", size: 88, rotate: -11, opacity: 0.15 },
 ];
 
+/** Stable 0–1 per string + salt (SSR/hydration-safe “random”). */
+function strUnit(s: string, salt: number): number {
+  let h = 2166136261 ^ salt;
+  const t = `${s}\0${salt}`;
+  for (let i = 0; i < t.length; i++) {
+    h ^= t.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return (h >>> 0) / 4294967296;
+}
+
+/** Per-logo entrance timing & drift — feels random, identical every load. */
+function memeFloatIn(file: string, rotate: number) {
+  const u = (n: number) => strUnit(file, n);
+  return {
+    delay: 0.03 + u(0) * 0.72,
+    duration: 0.68 + u(1) * 0.48,
+    x: (u(2) - 0.5) * 52,
+    y: 20 + u(3) * 40,
+    rotateFrom: rotate + (u(4) - 0.5) * 34 - 16,
+  };
+}
+
 export function LoreManifesto() {
   const reduce = useReducedMotion();
   const scrollVp = reduce ? floatViewportReduced : floatViewport;
+  const logoWrapRef = useRef<HTMLDivElement>(null);
+  /** Replays float-in whenever the manifesto panel enters the viewport (scroll up or down). */
+  const logosInView = useInView(logoWrapRef, { ...scrollVp, once: false });
 
   return (
     <section
@@ -77,34 +105,45 @@ export function LoreManifesto() {
           {/* Frosted panel: illustration stays visible at edges; copy sits on a high-contrast surface */}
           <div className="relative z-10 mx-auto w-full max-w-[42rem] overflow-hidden rounded-2xl bg-foam/94 px-6 py-10 shadow-[0_8px_40px_-12px_rgba(20,40,61,0.18)] ring-1 ring-accent-deep/[0.12] backdrop-blur-md backdrop-saturate-110 sm:px-10 sm:py-12">
             <div
+              ref={logoWrapRef}
               aria-hidden
               className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-2xl"
             >
-              {MEME_LOGO_PLACEMENT.map(({ file, top, left, size, rotate, opacity }) => (
-                <div
-                  key={file}
-                  className="absolute rounded-full border border-accent-deep/[0.06] bg-foam/30 shadow-[inset_0_0_20px_rgba(20,40,61,0.06)]"
-                  style={{
-                    top,
-                    left,
-                    width: size,
-                    height: size,
-                    opacity,
-                    transform: `rotate(${rotate}deg)`,
-                  }}
-                >
-                  <div className="relative h-full w-full overflow-hidden rounded-full">
-                    <Image
-                      src={`/brand/meme-logos/${encodeURIComponent(file)}`}
-                      alt=""
-                      fill
-                      sizes={`${size}px`}
-                      className="object-cover grayscale"
-                      draggable={false}
-                    />
-                  </div>
-                </div>
-              ))}
+              {MEME_LOGO_PLACEMENT.map(({ file, top, left, size, rotate, opacity }) => {
+                const float = memeFloatIn(file, rotate);
+                const atRest = { opacity, x: 0, y: 0, rotate };
+                const preFloat = {
+                  opacity: 0,
+                  x: float.x,
+                  y: float.y,
+                  rotate: float.rotateFrom,
+                };
+                return (
+                  <motion.div
+                    key={file}
+                    className="absolute rounded-full border border-accent-deep/[0.06] bg-foam/30 shadow-[inset_0_0_20px_rgba(20,40,61,0.06)]"
+                    style={{ top, left, width: size, height: size }}
+                    initial={false}
+                    animate={reduce ? atRest : logosInView ? atRest : preFloat}
+                    transition={{
+                      duration: reduce ? 0 : logosInView ? float.duration : 0,
+                      delay: reduce ? 0 : logosInView ? float.delay : 0,
+                      ease: EASE_TIDE,
+                    }}
+                  >
+                    <div className="relative h-full w-full overflow-hidden rounded-full">
+                      <Image
+                        src={`/brand/meme-logos/${encodeURIComponent(file)}`}
+                        alt=""
+                        fill
+                        sizes={`${size}px`}
+                        className="object-cover grayscale"
+                        draggable={false}
+                      />
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
             <motion.div
               variants={staggerParent}
