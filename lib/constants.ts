@@ -17,8 +17,15 @@ export const X_HANDLE = "whalecoineth" as const;
 /** Dexscreener homepage (footer icon, charts). */
 export const DEXSCREENER_URL = "https://dexscreener.com/" as const;
 
-/** Etherscan homepage (footer icon). Token page: `https://etherscan.io/token/${TOKEN.contract}` */
+/** Hero “Track the Tide” — pair / pool page. */
+export const DEXSCREENER_PAIR_URL =
+  "https://dexscreener.com/ethereum/0x915dfae27050c500d8082a9e58e6f967f2fbae68" as const;
+
+/** Etherscan homepage. */
 export const ETHERSCAN_URL = "https://etherscan.io/" as const;
+
+/** WHALE token on Etherscan — footer icon; stays aligned with `TOKEN.contract`. */
+export const ETHERSCAN_TOKEN_URL = `https://etherscan.io/token/${TOKEN.contract}`;
 
 /** Claim app: eligibility + whale watching dashboard. */
 export const CLAIM_APP_URL = "https://claim.whalecoineth.com/" as const;
@@ -29,7 +36,7 @@ export const SOCIALS = {
   dexscreener: DEXSCREENER_URL,
   /** Header “Whale Watching Dashboard” — claim app. */
   whaleWatching: CLAIM_APP_URL,
-  etherscan: ETHERSCAN_URL,
+  etherscan: ETHERSCAN_TOKEN_URL,
   buy: "https://app.uniswap.org/",
   /** Hero / final CTA “Check Eligibility” — claim app. */
   claimEligibility: CLAIM_APP_URL,

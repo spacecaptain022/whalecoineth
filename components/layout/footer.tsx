@@ -1,6 +1,11 @@
 import Image from "next/image";
 import { CopyButton } from "@/components/ui/copy-button";
-import { DEXSCREENER_URL, ETHERSCAN_URL, SOCIALS, TOKEN } from "@/lib/constants";
+import {
+  DEXSCREENER_PAIR_URL,
+  ETHERSCAN_TOKEN_URL,
+  SOCIALS,
+  TOKEN,
+} from "@/lib/constants";
 
 const iconLinkClass =
   "flex h-10 w-10 items-center justify-center rounded-lg border border-surface-dark/50 bg-foam/30 text-accent-deep transition-colors duration-200 ease-[var(--ease-ink)] hover:bg-foam/60 hover:border-accent-deep/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-deep";
@@ -14,15 +19,21 @@ export function Footer() {
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 md:px-8 py-8 md:py-9">
         <div className="flex flex-col items-center text-center gap-5">
           <div className="flex flex-col items-center gap-2">
-            <span className="relative h-11 w-11 overflow-hidden rounded-full border border-accent-deep/50">
+            <a
+              href={DEXSCREENER_PAIR_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative block h-11 w-11 overflow-hidden rounded-full border border-accent-deep/50 outline-none transition-[transform,box-shadow] duration-200 ease-[var(--ease-ink)] hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-deep"
+              aria-label="View Whalecoin on Dexscreener"
+            >
               <Image
                 src="/brand/logo.jpeg"
-                alt="Whalecoin"
+                alt=""
                 fill
                 sizes="44px"
                 className="object-cover scale-[1.05]"
               />
-            </span>
+            </a>
             <span className="wordmark text-[16px] text-text">Whalecoin</span>
           </div>
 
@@ -46,11 +57,11 @@ export function Footer() {
               />
             </a>
             <a
-              href={DEXSCREENER_URL}
+              href={DEXSCREENER_PAIR_URL}
               target="_blank"
               rel="noopener noreferrer"
               className={`${iconLinkClass} overflow-hidden p-1`}
-              aria-label="Dexscreener"
+              aria-label="Dexscreener pair chart"
             >
               <Image
                 src={dexscreenerLogoSrc}
@@ -61,11 +72,11 @@ export function Footer() {
               />
             </a>
             <a
-              href={ETHERSCAN_URL}
+              href={ETHERSCAN_TOKEN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className={`${iconLinkClass} overflow-hidden p-1`}
-              aria-label="Etherscan"
+              aria-label="Whalecoin token on Etherscan"
             >
               <Image
                 src="/brand/etherscan-mark.svg"

@@ -6,7 +6,7 @@ import { motion, useAnimationControls, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, LineChart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
-import { SOCIALS, TOKEN } from "@/lib/constants";
+import { DEXSCREENER_PAIR_URL, SOCIALS, TOKEN } from "@/lib/constants";
 import {
   clipReveal,
   EASE_TIDE,
@@ -177,7 +177,7 @@ export function Hero() {
               Check Eligibility
               <ArrowUpRight className="h-4 w-4" />
             </Button>
-            <Button href={SOCIALS.dexscreener} external variant="secondary" size="lg">
+            <Button href={DEXSCREENER_PAIR_URL} external variant="secondary" size="lg">
               <LineChart className="h-4 w-4" />
               Track the Tide
             </Button>
