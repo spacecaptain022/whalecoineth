@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/cn";
 import {
@@ -36,6 +37,26 @@ const STANZAS: { lines: string[]; weight?: "normal" | "bold" }[] = [
   },
 ];
 
+/** One entry per asset in `Meme logos/` (served from `public/brand/meme-logos/`). */
+const MEME_LOGO_PLACEMENT: {
+  file: string;
+  top: string;
+  left: string;
+  size: number;
+  rotate: number;
+  opacity: number;
+}[] = [
+  { file: "Bitcoin.svg (1).png", top: "4%", left: "3%", size: 72, rotate: -12, opacity: 0.16 },
+  { file: "Shiba_Inu_coin_logo.png", top: "8%", left: "68%", size: 92, rotate: 7, opacity: 0.15 },
+  { file: "asteroid logo.png", top: "28%", left: "8%", size: 68, rotate: 15, opacity: 0.17 },
+  { file: "joe logo.png", top: "38%", left: "78%", size: 76, rotate: -9, opacity: 0.16 },
+  { file: "mog logo.png", top: "52%", left: "7%", size: 84, rotate: 11, opacity: 0.13 },
+  { file: "neiro logo.png", top: "58%", left: "72%", size: 70, rotate: -6, opacity: 0.16 },
+  { file: "npc logo.png", top: "72%", left: "12%", size: 78, rotate: 8, opacity: 0.15 },
+  { file: "pepe logo.png", top: "26%", left: "58%", size: 64, rotate: -4, opacity: 0.12 },
+  { file: "spx logo.png", top: "76%", left: "70%", size: 88, rotate: -11, opacity: 0.15 },
+];
+
 export function LoreManifesto() {
   const reduce = useReducedMotion();
   const scrollVp = reduce ? floatViewportReduced : floatViewport;
@@ -54,13 +75,43 @@ export function LoreManifesto() {
             style={{ backgroundImage: "url('/brand/scroll-writing.png')" }}
           />
           {/* Frosted panel: illustration stays visible at edges; copy sits on a high-contrast surface */}
-          <div className="relative z-10 mx-auto w-full max-w-[42rem] rounded-2xl bg-foam/94 px-6 py-10 shadow-[0_8px_40px_-12px_rgba(20,40,61,0.18)] ring-1 ring-accent-deep/[0.12] backdrop-blur-md backdrop-saturate-110 sm:px-10 sm:py-12">
+          <div className="relative z-10 mx-auto w-full max-w-[42rem] overflow-hidden rounded-2xl bg-foam/94 px-6 py-10 shadow-[0_8px_40px_-12px_rgba(20,40,61,0.18)] ring-1 ring-accent-deep/[0.12] backdrop-blur-md backdrop-saturate-110 sm:px-10 sm:py-12">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-2xl"
+            >
+              {MEME_LOGO_PLACEMENT.map(({ file, top, left, size, rotate, opacity }) => (
+                <div
+                  key={file}
+                  className="absolute rounded-full border border-accent-deep/[0.06] bg-foam/30 shadow-[inset_0_0_20px_rgba(20,40,61,0.06)]"
+                  style={{
+                    top,
+                    left,
+                    width: size,
+                    height: size,
+                    opacity,
+                    transform: `rotate(${rotate}deg)`,
+                  }}
+                >
+                  <div className="relative h-full w-full overflow-hidden rounded-full">
+                    <Image
+                      src={`/brand/meme-logos/${encodeURIComponent(file)}`}
+                      alt=""
+                      fill
+                      sizes={`${size}px`}
+                      className="object-cover grayscale"
+                      draggable={false}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
             <motion.div
               variants={staggerParent}
               initial="hidden"
               whileInView="show"
               viewport={scrollVp}
-              className="flex flex-col items-center gap-3 text-center"
+              className="relative z-10 flex flex-col items-center gap-3 text-center"
             >
             <motion.span
               variants={fadeRise}
